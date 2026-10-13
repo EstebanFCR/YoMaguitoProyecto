@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini web de formularios</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Mini web de formularios</h1>
+    <nav id="nav">
+      <a href="#registro">Registro</a>
+      <a href="#login">Login</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#encuesta">Encuesta</a>
+      <a href="#pedido">Pedido</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. REGISTRO -->
+    <section id="registro" class="panel">
+      <h2>Registro de usuario</h2>
+      <form data-form="registro" novalidate>
+        <label>Nombre completo
+          <input type="text" name="nombre" required minlength="3">
+        </label>
+        <label>Correo
+          <input type="email" name="correo" required>
+        </label>
+        <label>Contraseña (mínimo 6 caracteres)
+          <input type="password" name="clave" required minlength="6">
+        </label>
+        <label>Fecha de nacimiento
+          <input type="date" name="nacimiento" required>
+        </label>
+        <button type="submit">Crear cuenta</button>
+      </form>
+    </section>
+
+    <!-- 2. LOGIN -->
+    <section id="login" class="panel">
+      <h2>Iniciar sesión</h2>
+      <form data-form="login" novalidate>
+        <label>Correo
+          <input type="email" name="correo" required>
+        </label>
+        <label>Contraseña
+          <input type="password" name="clave" required minlength="6">
+        </label>
+        <label class="check">
+          <input type="checkbox" name="recordarme"> Recordarme
+        </label>
+        <button type="submit">Entrar</button>
+      </form>
+    </section>
+
+    <!-- 3. CONTACTO -->
+    <section id="contacto" class="panel">
+      <h2>Contacto</h2>
+      <form data-form="contacto" novalidate>
+        <label>Tu nombre
+          <input type="text" name="nombre" required>
+        </label>
+        <label>Asunto
+          <select name="asunto" required>
+            <option value="">Elige uno</option>
+            <option>Consulta</option>
+            <option>Sugerencia</option>
+            <option>Reclamo</option>
+          </select>
+        </label>
+        <label>Mensaje
+          <textarea name="mensaje" rows="4" required minlength="10"></textarea>
+        </label>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </section>
+
+    <!-- 4. ENCUESTA -->
+    <section id="encuesta" class="panel">
+      <h2>Encuesta de satisfacción</h2>
+      <form data-form="encuesta" novalidate>
+        <fieldset>
+          <legend>¿Qué tan útil te pareció la web?</legend>
+          <label class="check"><input type="radio" name="utilidad" value="1" required> Poco</label>
+          <label class="check"><input type="radio" name="utilidad" value="2"> Regular</label>
+          <label class="check"><input type="radio" name="utilidad" value="3"> Mucho</label>
+        </fieldset>
+        <fieldset>
+          <legend>¿Qué temas te interesan?</legend>
+          <label class="check"><input type="checkbox" name="temas" value="Java"> Java</label>
+          <label class="check"><input type="checkbox" name="temas" value="Spring Boot"> Spring Boot</label>
+          <label class="check"><input type="checkbox" name="temas" value="Git"> Git</label>
+        </fieldset>
+        <label>Nota del 1 al 10: <output id="notaOut">5</output>
+          <input type="range" name="nota" min="1" max="10" value="5">
+        </label>
+        <button type="submit">Enviar encuesta</button>
+      </form>
+    </section>
+
+    <!-- 5. PEDIDO -->
+    <section id="pedido" class="panel">
+      <h2>Pedido de producto</h2>
+      <form data-form="pedido" novalidate>
+        <label>Producto
+          <select name="producto" required>
+            <option value="">Elige uno</option>
+            <option value="25">Cuaderno (S/ 25)</option>
+            <option value="40">Mochila (S/ 40)</option>
+            <option value="15">Lapicero pack (S/ 15)</option>
+          </select>
+        </label>
+        <label>Cantidad
+          <input type="number" name="cantidad" min="1" max="20" value="1" required>
+        </label>
+        <label>Dirección de entrega
+          <input type="text" name="direccion" required minlength="5">
+        </label>
+        <p class="total">Total: S/ <span id="total">0</span></p>
+        <button type="submit">Confirmar pedido</button>
+      </form>
+    </section>
+
+    <aside id="resultado" class="resultado" hidden>
+      <h3 id="resultadoTitulo"></h3>
+      <pre id="resultadoDatos"></pre>
+    </aside>
+  </main>
+
+  <footer>Proyecto de práctica de Git y GitHub</footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
